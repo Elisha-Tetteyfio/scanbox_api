@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :auth do
     post "/signup", to: "registrations#create"
+    post "/login", to: "sessions#create"
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
