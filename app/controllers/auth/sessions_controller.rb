@@ -19,6 +19,12 @@ class Auth::SessionsController < ApplicationController
     end
   end
 
+  # POST /auth/logout
+  def delete
+    cookies.delete(:accessToken)
+    render json: { message: "Logged out" }
+  end
+
   private
 
     def login_params
