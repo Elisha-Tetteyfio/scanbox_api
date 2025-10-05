@@ -14,5 +14,15 @@ test:
   database: <%= ENV.fetch("SCANBOX_DATABASE_TEST") %>
 
 production:
-  <<: *default
-  database: <%= ENV.fetch("SCANBOX_DATABASE_PRODUCTION", "scanbox_db_prod") %>
+  primary: &primary_production
+    <<: *default
+    database: <%= ENV.fetch("SCANBOX_DATABASE_PRODUCTION", "scanbox_db_prod") %>
+  cable: &cable
+    <<: *default
+    database: scanbox_db_cable
+  queue: &queue
+    <<: *default
+    database: scanbox_db_queue
+  cache: &cache
+    <<: *default
+    database: scanbox_db_cache
