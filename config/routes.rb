@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: [:index, :show, :update]
 
   namespace :auth do
     post "/signup", to: "registrations#create"

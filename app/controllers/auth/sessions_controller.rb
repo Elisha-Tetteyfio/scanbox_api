@@ -1,4 +1,5 @@
 class Auth::SessionsController < ApplicationController
+  skip_before_action :authenticate_user
   # POST /auth/login
   def create
     user = User.find_by(email: params[:email])
