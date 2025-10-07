@@ -4,6 +4,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV.fetch("SCANBOX_USERNAME") %>
   password: <%= ENV.fetch("SCANBOX_PASSWORD") %>
+  host: <%= ENV.fetch("DB_HOST", "localhost") %>
+  port: <%= ENV.fetch("DB_PORT", 5432) %>
 
 development:
   <<: *default
