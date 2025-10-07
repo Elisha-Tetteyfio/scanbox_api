@@ -24,6 +24,8 @@ gem 'dotenv-rails'
 
 gem "jwt"
 
+gem "rack-cors"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
