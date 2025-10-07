@@ -2,12 +2,12 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV.fetch("SCANBOX_DATABASE") %>
   username: <%= ENV.fetch("SCANBOX_USERNAME") %>
   password: <%= ENV.fetch("SCANBOX_PASSWORD") %>
 
 development:
   <<: *default
+  database: <%= ENV.fetch("SCANBOX_DATABASE") %>
 
 test:
   <<: *default

@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: scanbox-api
+    runtime: ruby
+    plan: free
+    buildCommand: './bin/render-build.sh'
+    startCommand: './bin/rails server'
+    envVars:
+      - key: SCANBOX_DATABASE_PRODUCTION
+        fromDatabase:
+          name: scanbox-api-db
+          property: database
+      - key: SCANBOX_USERNAME
+        fromDatabase:
+          name: scanbox-api-db
+          property: user
+      - key: SCANBOX_PASSWORD
+        fromDatabase:
+          name: scanbox-api-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: scanbox-api-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: scanbox-api-db
+          property: port
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
+
+databases:
+  - name: scanbox-api-db
+    plan: free
