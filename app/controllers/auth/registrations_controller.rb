@@ -1,4 +1,6 @@
 class Auth::RegistrationsController < ApplicationController
+  skip_before_action :authenticate_user
+
   # POST /auth/signup
   def create
     @user = User.new(signup_params)
