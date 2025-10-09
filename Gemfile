@@ -26,6 +26,9 @@ gem "jwt"
 
 gem "rack-cors"
 
+gem 'rspec-rails'
+gem 'rswag'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false

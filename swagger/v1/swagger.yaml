@@ -1,0 +1,104 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/auth/signup":
+    post:
+      tags:
+        - Auth
+      summary: create registration
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                phone_number:
+                  type: string
+                password:
+                  type: string
+                user_type:
+                  type: string
+                  enum:
+                    - merchant
+                    - superadmin
+              required: []
+  "/auth/login":
+    post:
+      tags:
+        - Auth
+      summary: create session
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+  "/auth/logout":
+    post:
+      tags:
+        - Auth
+      summary: delete session
+      responses:
+        '200':
+          description: successful
+  "/users":
+    get:
+      tags:
+        - Users
+      summary: list users
+      responses:
+        '200':
+          description: successful
+  "/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+        - Users
+      summary: show user
+      responses:
+        '200':
+          description: successful
+    patch:
+      tags:
+        - Users
+      summary: update user
+      responses:
+        '200':
+          description: successful
+    put:
+      tags:
+        - Users
+      summary: update user
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
