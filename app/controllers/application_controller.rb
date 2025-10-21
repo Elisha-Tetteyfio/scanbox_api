@@ -15,4 +15,8 @@ class ApplicationController < ActionController::API
   rescue JWT::DecodeError
     render json: {error: "You must be signed in."}, status: :unauthorized
   end
+
+  def current_user
+    @current_user
+  end
 end
