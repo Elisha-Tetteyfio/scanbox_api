@@ -97,6 +97,88 @@ paths:
       responses:
         '200':
           description: successful
+  /businesses:
+    get:
+      tags:
+        - Business
+      summary: List businesses
+      operationId: listBusinesses
+      responses:
+        '200':
+          description: List of businesses
+
+    post:
+      tags:
+        - Business
+      summary: Create a business
+      operationId: createBusiness
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone_number:
+                  type: string
+      responses:
+        '201':
+          description: Created
+
+  /businesses/{id}:
+    patch:
+      tags:
+        - Business
+      summary: Update a business
+      operationId: updateBusiness
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Business UUID
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone_number:
+                  type: string
+      responses:
+        '200':
+          description: Updated business
+        '404':
+          description: Business not found
+
+    delete:
+      tags:
+        - Business
+      summary: Delete a business
+      operationId: deleteBusiness
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Business UUID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Deleted successfully
+ 
 servers:
 - url: https://{defaultHost}
   variables:
